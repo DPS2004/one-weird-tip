@@ -41,6 +41,7 @@
 		{ "character": "Samurai", "rowType": "Classic", "row": 0, "rooms": [0], "player": "P1", "pulseSound": "HatTight", "pulseSoundVolume": 100, "pulseSoundPitch": 100, "pulseSoundPan": 0, "pulseSoundOffset": 0 },
 		{ "character": "Samurai", "rowType": "Classic", "row": 1, "rooms": [0], "player": "P1", "pulseSound": "Chuck", "pulseSoundVolume": 100, "pulseSoundPitch": 100, "pulseSoundPan": 0, "pulseSoundOffset": 0 },
 		{ "character": "Samurai", "rowType": "Oneshot", "row": 2, "rooms": [0], "player": "P1", "pulseSound": "KickRupture", "pulseSoundVolume": 100, "pulseSoundPitch": 100, "pulseSoundPan": 0, "pulseSoundOffset": 0 },
+		{ "character": "Girl", "rowType": "Classic", "row": 3, "rooms": [3], "player": "P1", "pulseSound": "Sizzle", "pulseSoundVolume": 100, "pulseSoundPitch": 100, "pulseSoundPan": 0, "pulseSoundOffset": 0 },
 	],
 	"decorations":
 	[
