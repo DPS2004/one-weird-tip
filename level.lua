@@ -132,25 +132,25 @@ lp = {}
 
 window:move(3.5,{x=70,rot=-10},2,'outExpo')
 
-lp[0] = newpopup('popuptemporary.png',-3)
+lp[0] = newpopup('imofferingtoyou.png',-3)
 lp[0]:grow(3.5,20,55)
 
 window:move(7.5,{x=35,rot=5},2,'outExpo')
 
 lp[0]:back(7.5)
-lp[1] = newpopup('popuptemporary.png',-4)
+lp[1] = newpopup('mynewweightlossmethods.png',-4)
 lp[1]:grow(7.5,80,35)
 
 window:move(11.5,{x=65,y=65,rot=-5},2,'outExpo')
 
 lp[1]:back(11.5)
-lp[2] = newpopup('popuptemporary.png',-5)
+lp[2] = newpopup('forpenniesaday.png',-5)
 lp[2]:grow(11.5,40,25)
 
 window:move(15.5,{x=45,y=35,rot=2},2,'outExpo')
 
 lp[2]:back(15.5)
-lp[3] = newpopup('popuptemporary.png',-6)
+lp[3] = newpopup('andmiraclepills.png',-6)
 lp[3]:grow(15.5,60,75)
 
 
@@ -161,8 +161,8 @@ end
 
 window:pulse(20,1.05,16)
 
-lp[4] = newpopup('smallpopup.png',-7)
-lp[5] = newpopup('smallpopup.png',-8)
+lp[4] = newpopup('smallbusinessowner.png',-7)
+lp[5] = newpopup('smallbusinessowner.png',-8)
 lp[4]:grow(19.5,20,80)
 lp[5]:grow(19.5,80,20)
 
@@ -249,3 +249,83 @@ palace:move(50,{x=50},1,'outExpo')
 for i=4,12 do
 	lp[i]:shrink(35.5)
 end
+
+
+
+-- rest of wanita goes here
+wanitaroom:move(68,{sx=0,sy=0})
+
+
+--chorus time!!!!!!
+wtwindow1 = level:newdecoration('weirdtipwindow.png', 10, windowroom.index, 'wtwindow1')
+wtwindow2 = level:newdecoration('weirdtipwindow.png', 10, windowroom.index, 'wtwindow2')
+wtwindow1:hide(0)
+wtwindow2:hide(0)
+
+function chorus(beat)
+	level:offset(beat)
+	
+	
+	local windowlow = 25
+	local windowhigh = 75
+	wtwindow1:move(-2,{x=120,y=windowhigh,sx=0.5,sy=0.5})
+	wtwindow2:move(-2,{x=-20,y=windowlow,sx=0.5,sy=0.5})
+	
+	wtwindow1:show(0)
+	wtwindow2:show(0)
+	
+	
+	level.dofinalize = true --a crappy trick to force DN to write these events in the exact order
+	--normally it doesnt matter, but for some reason it does here!
+	--¯\_(ツ)_/¯
+	windowroom:settheme(0,'matrix')
+	windowroom:flash(0,'000000',4,'000000',4,1,'Linear',true)
+	windowroom:hom(0,true)
+	level.dofinalize = false
+	--i guess you could call it...
+	--a weird trick.
+	--(gets killed instantly)
+	
+	window:move(-2,{sx=1.8,sy=1.8,x=50,y=50},2,'inExpo')
+
+	for i=0,3 do
+		window:move(i*14,{rot=10+(i*2)},3,'outExpo')
+		window:move(i*14+3,{rot=0},4,'inExpo')
+		window:move(i*14+7,{rot=-10-(i*2)},3,'outExpo')
+		window:move(i*14+10,{rot=0},4,'inExpo')
+		
+		wtwindow1:move(i*14,{rot=-10-(i)},3,'outExpo')
+		wtwindow1:move(i*14+3,{rot=0},4,'inExpo')
+		wtwindow1:move(i*14+7,{rot=10+(i)},3,'outExpo')
+		wtwindow1:move(i*14+10,{rot=0},4,'inExpo')
+		
+		wtwindow2:move(i*14,{rot=-10-(i)},3,'outExpo')
+		wtwindow2:move(i*14+3,{rot=0},4,'inExpo')
+		wtwindow2:move(i*14+7,{rot=10+(i)},3,'outExpo')
+		wtwindow2:move(i*14+10,{rot=0},4,'inExpo')
+		
+		
+		
+	end
+	
+	for i=0,1 do
+		wtwindow1:move(i*28,{x=windowlow},4,'outExpo')
+		wtwindow2:move(i*28,{x=windowhigh},4,'outExpo')
+		
+		wtwindow1:move(i*28+7,{y=windowlow},4,'outExpo')
+		wtwindow2:move(i*28+7,{y=windowhigh},4,'outExpo')
+		
+		wtwindow1:move(i*28+14,{x=windowhigh},4,'outExpo')
+		wtwindow2:move(i*28+14,{x=windowlow},4,'outExpo')
+		
+		wtwindow1:move(i*28+21,{y=windowhigh},4,'outExpo')
+		wtwindow2:move(i*28+21,{y=windowlow},4,'outExpo')
+	end
+	
+	
+	
+end
+	
+	
+	
+chorus(68)
