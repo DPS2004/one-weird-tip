@@ -257,12 +257,12 @@ wanitaroom:move(68,{sx=0,sy=0})
 
 
 --chorus time!!!!!!
-wtwindow1 = level:newdecoration('weirdtipwindow.png', 10, windowroom.index, 'wtwindow1')
-wtwindow2 = level:newdecoration('weirdtipwindow.png', 10, windowroom.index, 'wtwindow2')
+wtwindow1 = level:newdecoration('creepyhands', 10, windowroom.index, 'wtwindow1')
+wtwindow2 = level:newdecoration('creepyhands', 10, windowroom.index, 'wtwindow2')
 wtwindow1:hide(0)
 wtwindow2:hide(0)
 
-function chorus(beat)
+function chorus(beat,first)
 	level:offset(beat)
 	
 	
@@ -274,6 +274,14 @@ function chorus(beat)
 	wtwindow1:show(0)
 	wtwindow2:show(0)
 	
+	level:alloutline(0,'000000',10,0,'Linear')
+	
+	if first then
+		row1:hide(0)
+		row2:show(0)
+		row0:move(0,{x=10,y=70,pivot=0})
+		row2:move(0,{x=10,y=30,pivot=0})
+	end
 	
 	level.dofinalize = true --a crappy trick to force DN to write these events in the exact order
 	--normally it doesnt matter, but for some reason it does here!
@@ -287,7 +295,12 @@ function chorus(beat)
 	--(gets killed instantly)
 	
 	window:move(-2,{sx=1.8,sy=1.8,x=50,y=50},2,'inExpo')
-
+	
+	for i=0,7 do
+		row0:setborder(i*7,'Outline','ffff00',100,0,'Linear')
+		row0:setborder(i*7+0.5,'Outline','000000',10,0,'Linear')
+	end
+	
 	for i=0,3 do
 		window:move(i*14,{rot=10+(i*2)},3,'outExpo')
 		window:move(i*14+3,{rot=0},4,'inExpo')
@@ -322,10 +335,22 @@ function chorus(beat)
 		wtwindow2:move(i*28+21,{y=windowlow},4,'outExpo')
 	end
 	
+	local lastexpr = -1
+	math.randomseed(1)
+	for i=0,9*14 do
+		local expression = math.random(0,29)
+		if expression == lastexpr then
+			expression = (expression + 1) % 30
+		end
+		lastexpr = expression
+		wtwindow1:playexpression(i*0.5,tostring(expression))
+		wtwindow2:playexpression(i*0.5,tostring(expression))
+	end
+	
 	
 	
 end
 	
 	
 	
-chorus(68)
+chorus(68,true)
