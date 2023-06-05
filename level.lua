@@ -321,10 +321,43 @@ level:reorderrooms(68,3,2,0,1)
 
 
 --chorus time!!!!!!
-wtwindow1 = level:newdecoration('creepyhands', 10, windowroom.index, 'wtwindow1')
-wtwindow2 = level:newdecoration('creepyhands', 10, windowroom.index, 'wtwindow2')
-wtwindow1:hide(0)
-wtwindow2:hide(0)
+
+wtwindow = {}
+clyrics = {}
+wtwindow[1] = level:newdecoration('creepyhands', 10, windowroom.index, 'wtwindow1')
+wtwindow[2] = level:newdecoration('creepyhands', 10, windowroom.index, 'wtwindow2')
+clyrics[1] = level:newdecoration('choruslyrics',9, windowroom.index, 'clyrics1')
+clyrics[2] = level:newdecoration('choruslyrics',9, windowroom.index, 'clyrics2')
+
+
+winman = {}
+function winman:move(w,b,p,l,e)
+	wtwindow[w]:move(b,p,l,e)
+	if p.rot then
+		p.rot = p.rot * 2
+	end
+	clyrics[w]:move(b,p,l,e)
+end
+function winman:show(w,b)
+	wtwindow[w]:show(b)
+	clyrics[w]:show(b)
+end
+function winman:hide(w,b)
+	wtwindow[w]:hide(b)
+	clyrics[w]:hide(b)
+end
+function winman:image(b,e)
+	e = tostring(e)
+	wtwindow[1]:playexpression(b,e)
+	wtwindow[2]:playexpression(b,e)
+end
+function winman:lyric(b,e)
+	clyrics[1]:playexpression(b,e)
+	clyrics[2]:playexpression(b,e)
+end
+
+winman:hide(1,0)
+winman:hide(2,0)
 
 function chorus(beat,first)
 	level:offset(beat)
@@ -332,11 +365,11 @@ function chorus(beat,first)
 	
 	local windowlow = 25
 	local windowhigh = 75
-	wtwindow1:move(-2,{x=120,y=windowhigh,sx=0.5,sy=0.5})
-	wtwindow2:move(-2,{x=-20,y=windowlow,sx=0.5,sy=0.5})
+	winman:move(1,-2,{x=120,y=windowhigh,sx=0.5,sy=0.5})
+	winman:move(2,-2,{x=-20,y=windowlow,sx=0.5,sy=0.5})
 	
-	wtwindow1:show(0)
-	wtwindow2:show(0)
+	winman:show(1,0)
+	winman:show(2,0)
 	
 	level:alloutline(0,'000000',10,0,'Linear')
 	
@@ -371,32 +404,32 @@ function chorus(beat,first)
 		window:move(i*14+7,{rot=-10-(i*2)},3,'outExpo')
 		window:move(i*14+10,{rot=0},4,'inExpo')
 		
-		wtwindow1:move(i*14,{rot=-10-(i)},3,'outExpo')
-		wtwindow1:move(i*14+3,{rot=0},4,'inExpo')
-		wtwindow1:move(i*14+7,{rot=10+(i)},3,'outExpo')
-		wtwindow1:move(i*14+10,{rot=0},4,'inExpo')
+		winman:move(1,i*14,{rot=-10-(i)},3,'outExpo')
+		winman:move(1,i*14+3,{rot=0},4,'inExpo')
+		winman:move(1,i*14+7,{rot=10+(i)},3,'outExpo')
+		winman:move(1,i*14+10,{rot=0},4,'inExpo')
 		
-		wtwindow2:move(i*14,{rot=-10-(i)},3,'outExpo')
-		wtwindow2:move(i*14+3,{rot=0},4,'inExpo')
-		wtwindow2:move(i*14+7,{rot=10+(i)},3,'outExpo')
-		wtwindow2:move(i*14+10,{rot=0},4,'inExpo')
+		winman:move(2,i*14,{rot=-10-(i)},3,'outExpo')
+		winman:move(2,i*14+3,{rot=0},4,'inExpo')
+		winman:move(2,i*14+7,{rot=10+(i)},3,'outExpo')
+		winman:move(2,i*14+10,{rot=0},4,'inExpo')
 		
 		
 		
 	end
 	
 	for i=0,1 do
-		wtwindow1:move(i*28,{x=windowlow},4,'outExpo')
-		wtwindow2:move(i*28,{x=windowhigh},4,'outExpo')
+		winman:move(1,i*28,{x=windowlow},4,'outExpo')
+		winman:move(2,i*28,{x=windowhigh},4,'outExpo')
 		
-		wtwindow1:move(i*28+7,{y=windowlow},4,'outExpo')
-		wtwindow2:move(i*28+7,{y=windowhigh},4,'outExpo')
+		winman:move(1,i*28+7,{y=windowlow},4,'outExpo')
+		winman:move(2,i*28+7,{y=windowhigh},4,'outExpo')
 		
-		wtwindow1:move(i*28+14,{x=windowhigh},4,'outExpo')
-		wtwindow2:move(i*28+14,{x=windowlow},4,'outExpo')
+		winman:move(1,i*28+14,{x=windowhigh},4,'outExpo')
+		winman:move(2,i*28+14,{x=windowlow},4,'outExpo')
 		
-		wtwindow1:move(i*28+21,{y=windowhigh},4,'outExpo')
-		wtwindow2:move(i*28+21,{y=windowlow},4,'outExpo')
+		winman:move(1,i*28+21,{y=windowhigh},4,'outExpo')
+		winman:move(2,i*28+21,{y=windowlow},4,'outExpo')
 	end
 	
 	local lastexpr = -1
@@ -407,9 +440,88 @@ function chorus(beat,first)
 			expression = (expression + 1) % 30
 		end
 		lastexpr = expression
-		wtwindow1:playexpression(i*0.5,tostring(expression))
-		wtwindow2:playexpression(i*0.5,tostring(expression))
+		winman:image(i*0.5,expression)
 	end
+	
+	
+	winman:lyric((7*0)+0,'one')
+	winman:lyric((7*0)+1,'weird')
+	winman:lyric((7*0)+2,'tip')
+	winman:lyric((7*0)+3,'dis')
+	winman:lyric((7*0)+3.5,'cov')
+	winman:lyric((7*0)+4,'ered')
+	winman:lyric((7*0)+4.5,'by')
+	winman:lyric((7*0)+5,'a')
+	winman:lyric((7*0)+5.5,'mom')
+	
+	winman:lyric((7*1)-0.5,'a')
+	winman:lyric((7*1)+0,'weird')
+	winman:lyric((7*1)+1,'old')
+	winman:lyric((7*1)+2,'tip')
+	winman:lyric((7*1)+3,'dis')
+	winman:lyric((7*1)+3.5,'cov')
+	winman:lyric((7*1)+4,'ered')
+	winman:lyric((7*1)+4.5,'by')
+	winman:lyric((7*1)+5,'a')
+	winman:lyric((7*1)+5.5,'mom')
+	
+	winman:lyric((7*2)-0.5,'and')
+	winman:lyric((7*2)+0,'you')
+	winman:lyric((7*2)+1,'can')
+	winman:lyric((7*2)+2,'own')
+	winman:lyric((7*2)+3,'your')
+	winman:lyric((7*2)+3.5,'name')
+	winman:lyric((7*2)+4.5,'dot')
+	winman:lyric((7*2)+5.5,'com')
+	
+	winman:lyric((7*3)-0.5,'and')
+	winman:lyric((7*3)+0,'you')
+	winman:lyric((7*3)+1,'can')
+	winman:lyric((7*3)+2,'own')
+	winman:lyric((7*3)+3,'your')
+	winman:lyric((7*3)+3.5,'name')
+	winman:lyric((7*3)+4.5,'dot')
+	winman:lyric((7*3)+5.5,'com')
+	
+	winman:lyric((7*4)-0.5,'and')
+	winman:lyric((7*4)+0,'you')
+	winman:lyric((7*4)+1,'can')
+	winman:lyric((7*4)+2,'own')
+	winman:lyric((7*4)+3,'your')
+	winman:lyric((7*4)+3.5,'name')
+	winman:lyric((7*4)+4.5,'dot')
+	winman:lyric((7*4)+5.5,'net')
+	
+	winman:lyric((7*5)-0.5,'with')
+	winman:lyric((7*5)+0,'all')
+	winman:lyric((7*5)+1,'the')
+	winman:lyric((7*5)+2,'act')
+	winman:lyric((7*5)+3,'ion')
+	winman:lyric((7*5)+3.5,'you')
+	winman:lyric((7*5)+4,'are')
+	winman:lyric((7*5)+4.5,'gon')
+	winman:lyric((7*5)+5,'na')
+	winman:lyric((7*5)+5.5,'get')
+	
+	winman:lyric((7*6)-0.5,'with')
+	winman:lyric((7*6)+0,'self')
+	winman:lyric((7*6)+1,'help')
+	winman:lyric((7*6)+2,'talks')
+	winman:lyric((7*6)+3,'on')
+	winman:lyric((7*6)+3.5,'c')
+	winman:lyric((7*6)+4.5,'d')
+	winman:lyric((7*6)+5.5,'rom')
+	
+	winman:lyric((7*7)-0.5,'and')
+	winman:lyric((7*7)+0,'one')
+	winman:lyric((7*7)+1,'weird')
+	winman:lyric((7*7)+2,'trick')
+	winman:lyric((7*7)+3,'dis')
+	winman:lyric((7*7)+3.5,'cov')
+	winman:lyric((7*7)+4,'ered')
+	winman:lyric((7*7)+4.5,'by')
+	winman:lyric((7*7)+5,'a')
+	winman:lyric((7*7)+5.5,'mom')
 	
 	
 	
