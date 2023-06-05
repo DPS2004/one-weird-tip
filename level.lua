@@ -378,6 +378,14 @@ function chorus(beat,first)
 		row2:show(0)
 		row0:move(0,{x=10,y=70,pivot=0})
 		row2:move(0,{x=10,y=30,pivot=0})
+	else
+		row1:show(0)
+		row2:show(0)
+		
+		row0:move(0,{x=10,y=70,pivot=0})
+		row2:move(0,{x=10,y=50,pivot=0})
+		row1:move(0,{x=10,y=30,pivot=0})
+	
 	end
 	
 	level.dofinalize = true --a crappy trick to force DN to write these events in the exact order
@@ -402,7 +410,11 @@ function chorus(beat,first)
 		window:move(i*14,{rot=10+(i*2)},3,'outExpo')
 		window:move(i*14+3,{rot=0},4,'inExpo')
 		window:move(i*14+7,{rot=-10-(i*2)},3,'outExpo')
-		window:move(i*14+10,{rot=0},4,'inExpo')
+		if i==3 and (not first) then
+			window:move(i*14+10,{rot=0,sx=2,sy=2},4,'inExpo')
+		else
+			window:move(i*14+10,{rot=0},4,'inExpo')
+		end
 		
 		winman:move(1,i*14,{rot=-10-(i)},3,'outExpo')
 		winman:move(1,i*14+3,{rot=0},4,'inExpo')
@@ -431,6 +443,9 @@ function chorus(beat,first)
 		winman:move(1,i*28+21,{y=windowhigh},4,'outExpo')
 		winman:move(2,i*28+21,{y=windowlow},4,'outExpo')
 	end
+	
+	winman:move(1,56,{x=-20},4,'outExpo')
+	winman:move(2,56,{x=120},4,'outExpo')
 	
 	local lastexpr = -1
 	math.randomseed(1)
@@ -515,7 +530,11 @@ function chorus(beat,first)
 	winman:lyric((7*7)-0.5,'and')
 	winman:lyric((7*7)+0,'one')
 	winman:lyric((7*7)+1,'weird')
-	winman:lyric((7*7)+2,'trick')
+	if first then
+		winman:lyric((7*7)+2,'trick')
+	else
+		winman:lyric((7*7)+2,'tip')
+	end
 	winman:lyric((7*7)+3,'dis')
 	winman:lyric((7*7)+3.5,'cov')
 	winman:lyric((7*7)+4,'ered')
@@ -531,3 +550,16 @@ end
 	
 chorus(68,true)
 level:offset(124) -- beat 0 is now the start of social media section, code goes here
+
+
+
+
+
+
+
+
+
+
+
+--second chorus 
+chorus(189,false)
