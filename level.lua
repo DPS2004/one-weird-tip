@@ -185,6 +185,11 @@ lp[11]:grow(31.5,20,50)
 lp[12] = newpopup('doctorshatehim.png',-15)
 lp[12]:grow(33.5,50,50)
 
+
+for i=4,12 do
+	lp[i]:shrink(35.5)
+end
+
 windowroom:settheme(35,'NeonMuseum')
 row0:move(35,{x=10,y=70,pivot=0})
 row1:show(35)
@@ -242,13 +247,16 @@ levitra:shrink(48)
 cialis:shrink(48)
 
 wanitaroom:move(47,{y=-20},1,'inQuad')
-wanitaroom:move(48,{x=-20,y=65})
+wanitaroom:move(47.9,{x=-20,y=65})
 wanitaroom:move(48.01,{x=20},2,'outExpo')
 
-wanitaroom:setbg(48,'wanitanigeria.png')
+wanitaroom:setbg(48,'wbg_nigeria.png')
+wanitaroom:setfg(48,'wanitafg_nigeria.png')
 
 wanitachar:move(48,{sx=2,sy=2})
 wanitachar:playexpression(48,'barely')
+
+window:move(48,{x=70,y=50},2,'outExpo')
 
 palace = level:newdecoration('palace.png', 0, wanitaroom.index, 'palace')
 palace:hide(0)
@@ -256,15 +264,60 @@ palace:move(0,{x=-50})
 palace:show(48)
 palace:move(50,{x=50},1,'outExpo')
 
+palace:hide(52)
+wanitaroom:setbg(52,'wbg_white.png')
+wanitaroom:setfg(52,'wanitafg.png')
+wanitachar:playexpression(52,'missed')
 
-for i=4,12 do
-	lp[i]:shrink(35.5)
+toomoney = newpopup('toomoney.png',-20)
+toomoney:grow(48,70,120)
+govt = newpopup('govt.png',-21)
+govt:grow(48,70,150)
+loveme = newpopup('loveme.png',-22)
+loveme:grow(48,70,180)
+
+toomoney:move(51,{y=20},1,'inSine')
+wanitahop(52)
+
+govt:move(55,{y=50},1,'inSine')
+wanitahop(56)
+
+loveme:move(57,{y=80},1,'inSine')
+wanitahop(58)
+wanitaroom:move(56,{x=20,y=50},2,'inExpo')
+
+toomoney:shrink(60)
+govt:shrink(60)
+loveme:shrink(60)
+
+wanitachar:playexpression(60,'happy')
+wanitachar:playexpression(64,'happy')
+
+wanitaroom:setfg(60,'wanitafg_desperate.png')
+wanitaroom:setfg(61,'wanitafg_wealthy.png')
+wanitaroom:setfg(62,'wanitafg_single.png')
+wanitaroom:setfg(63,'wanitafg_christian.png')
+wanitaroom:setfg(64,'wanitafg_allihave.png')
+
+for i=0,4 do
+	wanitaroom:move(60-0.5+i,{x=30+i*10},0.5,'inQuad')
+	if i==4 then
+		window:move(60+i,{x=130},1,'outExpo')
+		wanitaroom:move(60+i,{x=50,sx=75,sy=75},2,'outExpo')
+	else
+		window:move(60+i,{x=80+i*10},1,'outExpo')
+		wanitaroom:move(60+i,{x=20+i*5},0.5,'outSine')
+	end
 end
 
+level:reorderrooms(65,2,0,3,1)
 
 
--- rest of wanita goes here
+
+
+
 wanitaroom:move(68,{sx=0,sy=0})
+level:reorderrooms(68,3,2,0,1)
 
 
 --chorus time!!!!!!
@@ -365,3 +418,4 @@ end
 	
 	
 chorus(68,true)
+level:offset(124) -- beat 0 is now the start of social media section, code goes here
