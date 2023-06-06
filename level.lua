@@ -1,5 +1,7 @@
 -- one weird tip
 -- (discovered by a mom)
+_ANIMATESPHERE = false
+
 
 level:setuprooms()
 level:reorderrooms(0,3,2,0,1)
@@ -166,24 +168,29 @@ lp[5] = newpopup('smallbusinessowner.png',-8)
 lp[4]:grow(19.5,20,80)
 lp[5]:grow(19.5,80,20)
 
-lp[6] = newpopup('smallpopup.png',-9)
-lp[7] = newpopup('smallpopup.png',-10)
+lp[6] = newpopup('ink.png',-9)
+lp[7] = newpopup('ink.png',-10)
 lp[6]:grow(23.5,50,80)
 lp[7]:grow(23.5,50,20)
 
-lp[8] = newpopup('smallpopup.png',-11)
-lp[9] = newpopup('smallpopup.png',-12)
+lp[8] = newpopup('prescription.png',-11)
+lp[9] = newpopup('prescription.png',-12)
 lp[8]:grow(27.5,80,80)
 lp[9]:grow(27.5,20,20)
 
-lp[10] = newpopup('smallpopup.png',-13)
-lp[11] = newpopup('smallpopup.png',-14)
+lp[10] = newpopup('replica.png',-13)
+lp[11] = newpopup('replica.png',-14)
 lp[10]:grow(31.5,80,50)
 lp[11]:grow(31.5,20,50)
 
 
-lp[12] = newpopup('smallpopup.png',-15)
+lp[12] = newpopup('doctorshatehim.png',-15)
 lp[12]:grow(33.5,50,50)
+
+
+for i=4,12 do
+	lp[i]:shrink(35.5)
+end
 
 windowroom:settheme(35,'NeonMuseum')
 row0:move(35,{x=10,y=70,pivot=0})
@@ -191,8 +198,9 @@ row1:show(35)
 row1:move(35,{x=10,y=30,pivot=0})
 
 wanitaroom:move(34,{x=75,y=-20,sx=50,sy=50})
-wanitaroom:setbg(34,"wanitawindow.png")
-wanitaroom:mask(34,"wanitawindow.png")
+wanitaroom:setbg(34,"wbg_mynameis.png")
+wanitaroom:setfg(34,"wanitafg.png")
+wanitaroom:mask(34,"wanitamask.png")
 wanitachar:move(34,{x=50,y=30,pivot=0,sx=3,sy=3})
 wanitachar:showchar(34)
 
@@ -206,13 +214,23 @@ function wanitahop(b,y)
 end
 wanitahop(36.333)
 
+wanitaroom:setbg(37.666,'wbg_youngandlonely.png')
+
 wanitachar:playexpression(38,'barely')
 wanitachar:move(39,{sx=-3},0.5,'outQuad')
 
+wanitaroom:setbg(39.666,'wbg_white.png')
 wanitachar:playexpression(40,'neutral')
 
 wanitaroom:move(40,{x=50},2,'outExpo')
 window:move(40,{y=70},2,'outExpo')
+
+for100 = newpopup('for100.png',-16)
+inusdonly = newpopup('inusdonly.png',-17)
+for100:grow(40,83,22)
+inusdonly:grow(42,83,22)
+for100:shrink(44)
+inusdonly:shrink(44)
 
 hundo = level:newdecoration('hundo.png', 0, wanitaroom.index, 'hundo')
 hundo:hide(0)
@@ -221,8 +239,8 @@ hundo:show(40)
 hundo:move(40,{x=PX(126)},1,'outExpo')
 hundo:move(43,{x=110},1,'inExpo')
 
-levitra = newpopup('levitra.png',-16)
-cialis = newpopup('cialis.png',-17)
+levitra = newpopup('levitra.png',-18)
+cialis = newpopup('cialis.png',-19)
 levitra:grow(45,30,60)
 wanitahop(45)
 cialis:grow(47,70,60)
@@ -231,13 +249,16 @@ levitra:shrink(48)
 cialis:shrink(48)
 
 wanitaroom:move(47,{y=-20},1,'inQuad')
-wanitaroom:move(48,{x=-20,y=65})
+wanitaroom:move(47.9,{x=-20,y=65})
 wanitaroom:move(48.01,{x=20},2,'outExpo')
 
-wanitaroom:setbg(48,'wanitanigeria.png')
+wanitaroom:setbg(48,'wbg_nigeria.png')
+wanitaroom:setfg(48,'wanitafg_nigeria.png')
 
 wanitachar:move(48,{sx=2,sy=2})
 wanitachar:playexpression(48,'barely')
+
+window:move(48,{x=70,y=50},2,'outExpo')
 
 palace = level:newdecoration('palace.png', 0, wanitaroom.index, 'palace')
 palace:hide(0)
@@ -245,22 +266,100 @@ palace:move(0,{x=-50})
 palace:show(48)
 palace:move(50,{x=50},1,'outExpo')
 
+palace:hide(52)
+wanitaroom:setbg(52,'wbg_white.png')
+wanitaroom:setfg(52,'wanitafg.png')
+wanitachar:playexpression(52,'missed')
 
-for i=4,12 do
-	lp[i]:shrink(35.5)
+toomoney = newpopup('toomoney.png',-20)
+toomoney:grow(48,70,120)
+govt = newpopup('govt.png',-21)
+govt:grow(48,70,150)
+loveme = newpopup('loveme.png',-22)
+loveme:grow(48,70,180)
+
+toomoney:move(51,{y=20},1,'inSine')
+wanitahop(52)
+
+govt:move(55,{y=50},1,'inSine')
+wanitahop(56)
+
+loveme:move(57,{y=80},1,'inSine')
+wanitahop(58)
+wanitaroom:move(56,{x=20,y=50},2,'inExpo')
+
+toomoney:shrink(60)
+govt:shrink(60)
+loveme:shrink(60)
+
+wanitachar:playexpression(60,'happy')
+wanitachar:playexpression(64,'happy')
+
+wanitaroom:setfg(60,'wanitafg_desperate.png')
+wanitaroom:setfg(61,'wanitafg_wealthy.png')
+wanitaroom:setfg(62,'wanitafg_single.png')
+wanitaroom:setfg(63,'wanitafg_christian.png')
+wanitaroom:setfg(64,'wanitafg_allihave.png')
+
+for i=0,4 do
+	wanitaroom:move(60-0.5+i,{x=30+i*10},0.5,'inQuad')
+	if i==4 then
+		window:move(60+i,{x=130},1,'outExpo')
+		wanitaroom:move(60+i,{x=50,sx=75,sy=75},2,'outExpo')
+	else
+		window:move(60+i,{x=80+i*10},1,'outExpo')
+		wanitaroom:move(60+i,{x=20+i*5},0.5,'outSine')
+	end
 end
 
+level:reorderrooms(65,2,0,3,1)
 
 
--- rest of wanita goes here
+
+
+
 wanitaroom:move(68,{sx=0,sy=0})
+level:reorderrooms(68,3,2,0,1)
 
 
 --chorus time!!!!!!
-wtwindow1 = level:newdecoration('creepyhands', 10, windowroom.index, 'wtwindow1')
-wtwindow2 = level:newdecoration('creepyhands', 10, windowroom.index, 'wtwindow2')
-wtwindow1:hide(0)
-wtwindow2:hide(0)
+
+wtwindow = {}
+clyrics = {}
+wtwindow[1] = level:newdecoration('creepyhands', 10, windowroom.index, 'wtwindow1')
+wtwindow[2] = level:newdecoration('creepyhands', 10, windowroom.index, 'wtwindow2')
+clyrics[1] = level:newdecoration('choruslyrics',9, windowroom.index, 'clyrics1')
+clyrics[2] = level:newdecoration('choruslyrics',9, windowroom.index, 'clyrics2')
+
+
+winman = {}
+function winman:move(w,b,p,l,e)
+	wtwindow[w]:move(b,p,l,e)
+	if p.rot then
+		p.rot = p.rot * 2
+	end
+	clyrics[w]:move(b,p,l,e)
+end
+function winman:show(w,b)
+	wtwindow[w]:show(b)
+	clyrics[w]:show(b)
+end
+function winman:hide(w,b)
+	wtwindow[w]:hide(b)
+	clyrics[w]:hide(b)
+end
+function winman:image(b,e)
+	e = tostring(e)
+	wtwindow[1]:playexpression(b,e)
+	wtwindow[2]:playexpression(b,e)
+end
+function winman:lyric(b,e)
+	clyrics[1]:playexpression(b,e)
+	clyrics[2]:playexpression(b,e)
+end
+
+winman:hide(1,0)
+winman:hide(2,0)
 
 function chorus(beat,first)
 	level:offset(beat)
@@ -268,11 +367,11 @@ function chorus(beat,first)
 	
 	local windowlow = 25
 	local windowhigh = 75
-	wtwindow1:move(-2,{x=120,y=windowhigh,sx=0.5,sy=0.5})
-	wtwindow2:move(-2,{x=-20,y=windowlow,sx=0.5,sy=0.5})
+	winman:move(1,-2,{x=120,y=windowhigh,sx=0.5,sy=0.5})
+	winman:move(2,-2,{x=-20,y=windowlow,sx=0.5,sy=0.5})
 	
-	wtwindow1:show(0)
-	wtwindow2:show(0)
+	winman:show(1,0)
+	winman:show(2,0)
 	
 	level:alloutline(0,'000000',10,0,'Linear')
 	
@@ -281,6 +380,14 @@ function chorus(beat,first)
 		row2:show(0)
 		row0:move(0,{x=10,y=70,pivot=0})
 		row2:move(0,{x=10,y=30,pivot=0})
+	else
+		row1:show(0)
+		row2:show(0)
+		
+		row0:move(0,{x=10,y=70,pivot=0})
+		row2:move(0,{x=10,y=50,pivot=0})
+		row1:move(0,{x=10,y=30,pivot=0})
+	
 	end
 	
 	level.dofinalize = true --a crappy trick to force DN to write these events in the exact order
@@ -305,35 +412,42 @@ function chorus(beat,first)
 		window:move(i*14,{rot=10+(i*2)},3,'outExpo')
 		window:move(i*14+3,{rot=0},4,'inExpo')
 		window:move(i*14+7,{rot=-10-(i*2)},3,'outExpo')
-		window:move(i*14+10,{rot=0},4,'inExpo')
+		if i==3 and (not first) then
+			window:move(i*14+10,{rot=0,sx=2,sy=2},4,'inExpo')
+		else
+			window:move(i*14+10,{rot=0},4,'inExpo')
+		end
 		
-		wtwindow1:move(i*14,{rot=-10-(i)},3,'outExpo')
-		wtwindow1:move(i*14+3,{rot=0},4,'inExpo')
-		wtwindow1:move(i*14+7,{rot=10+(i)},3,'outExpo')
-		wtwindow1:move(i*14+10,{rot=0},4,'inExpo')
+		winman:move(1,i*14,{rot=-10-(i)},3,'outExpo')
+		winman:move(1,i*14+3,{rot=0},4,'inExpo')
+		winman:move(1,i*14+7,{rot=10+(i)},3,'outExpo')
+		winman:move(1,i*14+10,{rot=0},4,'inExpo')
 		
-		wtwindow2:move(i*14,{rot=-10-(i)},3,'outExpo')
-		wtwindow2:move(i*14+3,{rot=0},4,'inExpo')
-		wtwindow2:move(i*14+7,{rot=10+(i)},3,'outExpo')
-		wtwindow2:move(i*14+10,{rot=0},4,'inExpo')
+		winman:move(2,i*14,{rot=-10-(i)},3,'outExpo')
+		winman:move(2,i*14+3,{rot=0},4,'inExpo')
+		winman:move(2,i*14+7,{rot=10+(i)},3,'outExpo')
+		winman:move(2,i*14+10,{rot=0},4,'inExpo')
 		
 		
 		
 	end
 	
 	for i=0,1 do
-		wtwindow1:move(i*28,{x=windowlow},4,'outExpo')
-		wtwindow2:move(i*28,{x=windowhigh},4,'outExpo')
+		winman:move(1,i*28,{x=windowlow},4,'outExpo')
+		winman:move(2,i*28,{x=windowhigh},4,'outExpo')
 		
-		wtwindow1:move(i*28+7,{y=windowlow},4,'outExpo')
-		wtwindow2:move(i*28+7,{y=windowhigh},4,'outExpo')
+		winman:move(1,i*28+7,{y=windowlow},4,'outExpo')
+		winman:move(2,i*28+7,{y=windowhigh},4,'outExpo')
 		
-		wtwindow1:move(i*28+14,{x=windowhigh},4,'outExpo')
-		wtwindow2:move(i*28+14,{x=windowlow},4,'outExpo')
+		winman:move(1,i*28+14,{x=windowhigh},4,'outExpo')
+		winman:move(2,i*28+14,{x=windowlow},4,'outExpo')
 		
-		wtwindow1:move(i*28+21,{y=windowhigh},4,'outExpo')
-		wtwindow2:move(i*28+21,{y=windowlow},4,'outExpo')
+		winman:move(1,i*28+21,{y=windowhigh},4,'outExpo')
+		winman:move(2,i*28+21,{y=windowlow},4,'outExpo')
 	end
+	
+	winman:move(1,56,{x=-20},4,'outExpo')
+	winman:move(2,56,{x=120},4,'outExpo')
 	
 	local lastexpr = -1
 	math.randomseed(1)
@@ -343,9 +457,92 @@ function chorus(beat,first)
 			expression = (expression + 1) % 30
 		end
 		lastexpr = expression
-		wtwindow1:playexpression(i*0.5,tostring(expression))
-		wtwindow2:playexpression(i*0.5,tostring(expression))
+		winman:image(i*0.5,expression)
 	end
+	
+	
+	winman:lyric((7*0)+0,'one')
+	winman:lyric((7*0)+1,'weird')
+	winman:lyric((7*0)+2,'tip')
+	winman:lyric((7*0)+3,'dis')
+	winman:lyric((7*0)+3.5,'cov')
+	winman:lyric((7*0)+4,'ered')
+	winman:lyric((7*0)+4.5,'by')
+	winman:lyric((7*0)+5,'a')
+	winman:lyric((7*0)+5.5,'mom')
+	
+	winman:lyric((7*1)-0.5,'a')
+	winman:lyric((7*1)+0,'weird')
+	winman:lyric((7*1)+1,'old')
+	winman:lyric((7*1)+2,'tip')
+	winman:lyric((7*1)+3,'dis')
+	winman:lyric((7*1)+3.5,'cov')
+	winman:lyric((7*1)+4,'ered')
+	winman:lyric((7*1)+4.5,'by')
+	winman:lyric((7*1)+5,'a')
+	winman:lyric((7*1)+5.5,'mom')
+	
+	winman:lyric((7*2)-0.5,'and')
+	winman:lyric((7*2)+0,'you')
+	winman:lyric((7*2)+1,'can')
+	winman:lyric((7*2)+2,'own')
+	winman:lyric((7*2)+3,'your')
+	winman:lyric((7*2)+3.5,'name')
+	winman:lyric((7*2)+4.5,'dot')
+	winman:lyric((7*2)+5.5,'com')
+	
+	winman:lyric((7*3)-0.5,'and')
+	winman:lyric((7*3)+0,'you')
+	winman:lyric((7*3)+1,'can')
+	winman:lyric((7*3)+2,'own')
+	winman:lyric((7*3)+3,'your')
+	winman:lyric((7*3)+3.5,'name')
+	winman:lyric((7*3)+4.5,'dot')
+	winman:lyric((7*3)+5.5,'com')
+	
+	winman:lyric((7*4)-0.5,'and')
+	winman:lyric((7*4)+0,'you')
+	winman:lyric((7*4)+1,'can')
+	winman:lyric((7*4)+2,'own')
+	winman:lyric((7*4)+3,'your')
+	winman:lyric((7*4)+3.5,'name')
+	winman:lyric((7*4)+4.5,'dot')
+	winman:lyric((7*4)+5.5,'net')
+	
+	winman:lyric((7*5)-0.5,'with')
+	winman:lyric((7*5)+0,'all')
+	winman:lyric((7*5)+1,'the')
+	winman:lyric((7*5)+2,'act')
+	winman:lyric((7*5)+3,'ion')
+	winman:lyric((7*5)+3.5,'you')
+	winman:lyric((7*5)+4,'are')
+	winman:lyric((7*5)+4.5,'gon')
+	winman:lyric((7*5)+5,'na')
+	winman:lyric((7*5)+5.5,'get')
+	
+	winman:lyric((7*6)-0.5,'with')
+	winman:lyric((7*6)+0,'self')
+	winman:lyric((7*6)+1,'help')
+	winman:lyric((7*6)+2,'talks')
+	winman:lyric((7*6)+3,'on')
+	winman:lyric((7*6)+3.5,'c')
+	winman:lyric((7*6)+4.5,'d')
+	winman:lyric((7*6)+5.5,'rom')
+	
+	winman:lyric((7*7)-0.5,'and')
+	winman:lyric((7*7)+0,'one')
+	winman:lyric((7*7)+1,'weird')
+	if first then
+		winman:lyric((7*7)+2,'trick')
+	else
+		winman:lyric((7*7)+2,'tip')
+	end
+	winman:lyric((7*7)+3,'dis')
+	winman:lyric((7*7)+3.5,'cov')
+	winman:lyric((7*7)+4,'ered')
+	winman:lyric((7*7)+4.5,'by')
+	winman:lyric((7*7)+5,'a')
+	winman:lyric((7*7)+5.5,'mom')
 	
 	
 	
@@ -354,3 +551,99 @@ end
 	
 	
 chorus(68,true)
+level:offset(124) -- beat 0 is now the start of social media section, code goes here
+
+
+
+
+
+
+
+
+
+
+
+--second chorus 
+chorus(189,false)
+
+
+
+level:offset(0) --init verts
+verts = {}
+vertstatus = {}
+for i=1,162 do
+	verts[i] = level:newdecoration('weirdtipwindow.png',11, windowroom.index, 'vert'..i)
+	verts[i]:move(0,{x=-999,y=-999})
+	verts[i]:hide(0)
+	vertstatus[i] = {undrawn=true,c=false}
+end
+level:offset(245) -- ending
+
+
+proj = dofile('../proj.lua')
+icosphere_mesh = proj:loadobj('../icosphere.obj',4,true)
+
+sphereint = 1
+spherelength = ((20*7)+2)/sphereint
+if not _ANIMATESPHERE then
+	spherelength = 7
+end
+
+for i = -1,spherelength do
+	local beat = i * sphereint
+
+	proj:updatelookdir()
+	proj.camera.dir.x = (i+2) * (1/10) * sphereint
+	proj.camera.dir.z = (i+2)*0.5 * (1/10) * sphereint
+	proj:updatecamera()
+
+
+	local function drawvert(v,x,y,z,c)
+		local duration = sphereint
+		if vertstatus[v].undrawn or (not c) then
+			duration = 0
+			vertstatus[v].undrawn = false
+		end
+		
+		if z * 15 >= 1 then --attempt to catch glitched culling
+			c = false
+		end
+		
+		
+		
+		local firstframe = false
+		
+		if vertstatus[v].c ~= c then
+			if c then
+				verts[v]:show(beat)
+				firstframe = true
+			else
+				verts[v]:hide(beat)
+			end
+			vertstatus[v].c = c
+		end
+		
+		
+		if i == -1 then 
+			z = 0 
+		end
+		
+		if c then
+			if firstframe then
+				verts[v]:move(beat-sphereint,{x=PX(x),y=PY(y),sx=15*z,sy=15*z},0,'Linear')
+			end
+			verts[v]:move(beat,{x=PX(x),y=PY(y),sx=15*z,sy=15*z},duration,'Linear')
+		end
+	end
+	
+	for _i,v in ipairs(icosphere_mesh) do
+		local x,y,z,c = proj:getpoint(v)
+		z = z -0.95
+		z = 0.03 - z
+		drawvert(_i,x,y,z,c)
+	end
+	
+	
+	
+	
+end
