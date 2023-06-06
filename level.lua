@@ -1,5 +1,7 @@
 -- one weird tip
 -- (discovered by a mom)
+_ANIMATESPHERE = false
+
 
 level:setuprooms()
 level:reorderrooms(0,3,2,0,1)
@@ -563,3 +565,85 @@ level:offset(124) -- beat 0 is now the start of social media section, code goes 
 
 --second chorus 
 chorus(189,false)
+
+
+
+level:offset(0) --init verts
+verts = {}
+vertstatus = {}
+for i=1,162 do
+	verts[i] = level:newdecoration('weirdtipwindow.png',11, windowroom.index, 'vert'..i)
+	verts[i]:move(0,{x=-999,y=-999})
+	verts[i]:hide(0)
+	vertstatus[i] = {undrawn=true,c=false}
+end
+level:offset(245) -- ending
+
+
+proj = dofile('../proj.lua')
+icosphere_mesh = proj:loadobj('../icosphere.obj',4,true)
+
+sphereint = 1
+spherelength = ((20*7)+2)/sphereint
+if not _ANIMATESPHERE then
+	spherelength = 7
+end
+
+for i = -1,spherelength do
+	local beat = i * sphereint
+
+	proj:updatelookdir()
+	proj.camera.dir.x = (i+2) * (1/10) * sphereint
+	proj.camera.dir.z = (i+2)*0.5 * (1/10) * sphereint
+	proj:updatecamera()
+
+
+	local function drawvert(v,x,y,z,c)
+		local duration = sphereint
+		if vertstatus[v].undrawn or (not c) then
+			duration = 0
+			vertstatus[v].undrawn = false
+		end
+		
+		if z * 15 >= 1 then --attempt to catch glitched culling
+			c = false
+		end
+		
+		
+		
+		local firstframe = false
+		
+		if vertstatus[v].c ~= c then
+			if c then
+				verts[v]:show(beat)
+				firstframe = true
+			else
+				verts[v]:hide(beat)
+			end
+			vertstatus[v].c = c
+		end
+		
+		
+		if i == -1 then 
+			z = 0 
+		end
+		
+		if c then
+			if firstframe then
+				verts[v]:move(beat-sphereint,{x=PX(x),y=PY(y),sx=15*z,sy=15*z},0,'Linear')
+			end
+			verts[v]:move(beat,{x=PX(x),y=PY(y),sx=15*z,sy=15*z},duration,'Linear')
+		end
+	end
+	
+	for _i,v in ipairs(icosphere_mesh) do
+		local x,y,z,c = proj:getpoint(v)
+		z = z -0.95
+		z = 0.03 - z
+		drawvert(_i,x,y,z,c)
+	end
+	
+	
+	
+	
+end
