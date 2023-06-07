@@ -8,6 +8,7 @@ skellington.png - pipes
 info.png - KirbyCreep
 specialoffer.png - TatonSlice
 olives.png - purplpasta
+rodn.png - Xeno
 petey.png - TAPE_W0RM
 cockpics.png - Roxby
 walter.png - perfectfreeze_

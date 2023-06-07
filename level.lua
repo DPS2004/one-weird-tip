@@ -563,14 +563,16 @@ navbar:move(0,{y=50+PY(12)})
 
 notifs = {}
 notifs.decos = {
-	level:newdecoration('notif1.png',18,windowroom.index),
-	level:newdecoration('notif2.png',17,windowroom.index),
-	level:newdecoration('notif3.png',16,windowroom.index),
-	level:newdecoration('notif4.png',15,windowroom.index),
-	level:newdecoration('notif5.png',14,windowroom.index),
-	level:newdecoration('notif6.png',13,windowroom.index),
-	level:newdecoration('notif7.png',12,windowroom.index),
-	level:newdecoration('notif8.png',11,windowroom.index),
+	level:newdecoration('notif1.png',20,windowroom.index),
+	level:newdecoration('notif2.png',19,windowroom.index),
+	level:newdecoration('notif3.png',18,windowroom.index),
+	level:newdecoration('notif4.png',17,windowroom.index),
+	level:newdecoration('notif5.png',16,windowroom.index),
+	level:newdecoration('notif6.png',15,windowroom.index),
+	level:newdecoration('notif7.png',14,windowroom.index),
+	level:newdecoration('notif8.png',13,windowroom.index),
+	level:newdecoration('notif9.png',12,windowroom.index),
+	level:newdecoration('notif10.png',11,windowroom.index),
 }
 notifs.d = {
 	{h= 185, active = true},
@@ -580,6 +582,8 @@ notifs.d = {
 	{h= 43, active = true},
 	{h= 48, active = true},
 	{h= 55, active = true},
+	{h= 44, active = true},
+	{h= 44, active = true},
 	{h= 44, active = true},
 }
 
@@ -606,19 +610,22 @@ function notifs:moveactive(b,p,dur,e)
 end
 function notifs:dismiss(b,i,x)
 	self.d[i].active = false
-	self.decos[i]:move(b,{x=x*100+50},2,'outExpo')
+	self.decos[i]:move(b,{x=x*110+50},2,'outExpo')
 	self.decos[i]:hide(b+2)
 end
 notifs:moveactive(0,{y=-50})
 
 level:offset(124) -- beat 0 is now the start of social media section, code goes here
+bgroom:setbg(-4,'wdbackground2.png')
+
+window:pulse(0,1.05,16)
 
 navbar:show(-4)
 navbar:move(-4,{y=50},4,'inExpo')
 notifs:moveactive(-4,{y=100-PY(12)},4,'inExpo')
 
 level:alloutline(0,'000000',100,0,'Linear')
-
+windowroom:flash(0,'000000',4,'E6ECF3',100,1,'Linear',true)
 
 row0:move(-4,{y=20},4,'inExpo')
 row2:move(-4,{y=10},4,'inExpo')
@@ -647,9 +654,28 @@ notifs:moveactive(26-0.333,{y=100-PY(12)},2,'outExpo')
 
 notifs:dismiss(32-0.333,7,1)
 notifs:dismiss(32-0.333,8,-1)
+notifs:dismiss(32-0.333,9,1)
+notifs:dismiss(32-0.333,10,-1)
 
 
+window:move(16,{x=30},2,'outExpo')
+window:move(20,{x=70},2,'outExpo')
+window:move(24,{x=30},2,'outExpo')
+window:move(28,{x=70},2,'outExpo')
+window:move(32,{x=50},2,'outExpo')
 
+for i=0,3 do
+	window:move((i+4)*4+0,{sx=0.8,sy=1.2},0.5,'outSine')
+	window:move((i+4)*4+0.5,{sx=1,sy=1},0.5,'inExpo')
+	window:move((i+4)*4+1,{sx=1.2,sy=0.8},0.5,'outSine')
+	window:move((i+4)*4+1.5,{sx=1,sy=1},0.5,'inQuad')
+	local rm = (i%2)*-2+1
+	window:move((i+4)*4+2,{rot=10*rm},1,'outExpo')
+	window:move((i+4)*4+2.666,{rot=-10*rm},1,'outExpo')
+	window:move((i+4)*4+3,{rot=10*rm},1,'outExpo')
+	window:move((i+4)*4+3.666,{rot=-10*rm},1,'outExpo')
+	window:move((i+4)*4+4,{rot=0},1,'outExpo')
+end
 
 
 
