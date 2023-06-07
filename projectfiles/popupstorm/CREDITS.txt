@@ -8,5 +8,8 @@ skellington.png - pipes
 info.png - KirbyCreep
 specialoffer.png - TatonSlice
 olives.png - purplpasta
+petey.png - TAPE_W0RM
+cockpics.png - Roxby
+walter.png - perfectfreeze_
 
 all others by DPS2004 and Maddy
