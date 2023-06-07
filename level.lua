@@ -412,8 +412,12 @@ function chorus(beat,first)
 		window:move(i*14,{rot=10+(i*2)},3,'outExpo')
 		window:move(i*14+3,{rot=0},4,'inExpo')
 		window:move(i*14+7,{rot=-10-(i*2)},3,'outExpo')
-		if i==3 and (not first) then
-			window:move(i*14+10,{rot=0,sx=2,sy=2},4,'inExpo')
+		if i==3 then
+			local scale = 1
+			if not first then
+				scale = 2
+			end
+			window:move(i*14+10,{rot=0,sx=scale,sy=scale},4,'inExpo')
 		else
 			window:move(i*14+10,{rot=0},4,'inExpo')
 		end
@@ -551,7 +555,99 @@ end
 	
 	
 chorus(68,true)
+
+level:offset(0)
+navbar = level:newdecoration('navbar.png',0,windowroom.index, 'navbar')
+navbar:hide(0)
+navbar:move(0,{y=50+PY(12)})
+
+notifs = {}
+notifs.decos = {
+	level:newdecoration('notif1.png',18,windowroom.index),
+	level:newdecoration('notif2.png',17,windowroom.index),
+	level:newdecoration('notif3.png',16,windowroom.index),
+	level:newdecoration('notif4.png',15,windowroom.index),
+	level:newdecoration('notif5.png',14,windowroom.index),
+	level:newdecoration('notif6.png',13,windowroom.index),
+	level:newdecoration('notif7.png',12,windowroom.index),
+	level:newdecoration('notif8.png',11,windowroom.index),
+}
+notifs.d = {
+	{h= 185, active = true},
+	{h= 47, active = true},
+	{h= 40, active = true},
+	{h= 136, active = true},
+	{h= 43, active = true},
+	{h= 48, active = true},
+	{h= 55, active = true},
+	{h= 44, active = true},
+}
+
+function notifs:moveactive(b,p,dur,e)
+	for i,v in ipairs(self.decos) do
+		local d = self.d[i]
+		if d.active then
+			local myp = {}
+			for k,_v in pairs(p) do
+				myp[k] = _v
+				if k == 'y' then
+					local newy = 0
+					for _i = 1,i-1 do
+						if self.d[_i].active then
+							newy = newy - PY(self.d[_i].h + 5)
+						end
+					end
+					myp[k] = _v + newy
+				end
+			end
+			v:move(b,myp,dur,e)
+		end
+	end
+end
+function notifs:dismiss(b,i,x)
+	self.d[i].active = false
+	self.decos[i]:move(b,{x=x*100+50},2,'outExpo')
+	self.decos[i]:hide(b+2)
+end
+notifs:moveactive(0,{y=-50})
+
 level:offset(124) -- beat 0 is now the start of social media section, code goes here
+
+navbar:show(-4)
+navbar:move(-4,{y=50},4,'inExpo')
+notifs:moveactive(-4,{y=100-PY(12)},4,'inExpo')
+
+level:alloutline(0,'000000',100,0,'Linear')
+
+
+row0:move(-4,{y=20},4,'inExpo')
+row2:move(-4,{y=10},4,'inExpo')
+row1:move(-4,{y=10},4,'inExpo')
+
+row2:hide(0)
+row1:show(0)
+
+notifs:dismiss(4-0.333,1,1)
+notifs:moveactive(4-0.333,{y=100-PY(12)},2,'outExpo')
+
+notifs:dismiss(8-0.333,2,-1)
+notifs:moveactive(8-0.333,{y=100-PY(12)},2,'outExpo')
+
+notifs:dismiss(12-0.333,3,1)
+notifs:moveactive(12-0.333,{y=100-PY(12)},2,'outExpo')
+
+notifs:dismiss(16-0.333,4,-1)
+notifs:moveactive(16-0.333,{y=100-PY(12)},2,'outExpo')
+
+notifs:dismiss(20-0.333,5,1)
+notifs:moveactive(20-0.333,{y=100-PY(12)},2,'outExpo')
+
+notifs:dismiss(26-0.333,6,-1)
+notifs:moveactive(26-0.333,{y=100-PY(12)},2,'outExpo')
+
+notifs:dismiss(32-0.333,7,1)
+notifs:dismiss(32-0.333,8,-1)
+
 
 
 
