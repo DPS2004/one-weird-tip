@@ -21,5 +21,7 @@ freeanti.png - whistlr
 kermit.png - LandyRS
 dxmonster.png - Boo Ripley
 racist.png - solska
+smoke.png - bluefrit
+stand.png - bluefrit
 
 all others by DPS2004 and Maddy
