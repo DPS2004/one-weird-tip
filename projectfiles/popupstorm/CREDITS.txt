@@ -20,5 +20,6 @@ seenthisman.png - PKDeluxe
 freeanti.png - whistlr
 kermit.png - LandyRS
 dxmonster.png - Boo Ripley
+racist.png - solska
 
 all others by DPS2004 and Maddy
