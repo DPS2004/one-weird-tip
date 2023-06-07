@@ -16,5 +16,9 @@ whore.png - Albert Softie
 drugs.png - row_boat47
 BUY.png - Worrow
 setupwizard.png - dconn537
+seenthisman.png - PKDeluxe
+freeanti.png - whistlr
+kermit.png - LandyRS
+dxmonster.png - Boo Ripley
 
 all others by DPS2004 and Maddy
