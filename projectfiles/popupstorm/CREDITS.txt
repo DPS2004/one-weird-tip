@@ -11,5 +11,9 @@ olives.png - purplpasta
 petey.png - TAPE_W0RM
 cockpics.png - Roxby
 walter.png - perfectfreeze_
+thing.png - stuffbyrae
+whore.png - Albert Softie
+drugs.png - row_boat47
+BUY.png - Worrow
 
 all others by DPS2004 and Maddy
