@@ -15,5 +15,6 @@ thing.png - stuffbyrae
 whore.png - Albert Softie
 drugs.png - row_boat47
 BUY.png - Worrow
+setupwizard.png - dconn537
 
 all others by DPS2004 and Maddy
