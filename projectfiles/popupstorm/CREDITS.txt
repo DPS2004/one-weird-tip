@@ -25,5 +25,9 @@ racist.png - solska
 smoke.png - bluefrit
 stand.png - bluefrit
 hurt.png - Roxby
+scarygames.png - MMillion
+hot.png - ember
+sbahjhotbabes.png - Zara
+
 
 all others by DPS2004 and Maddy
