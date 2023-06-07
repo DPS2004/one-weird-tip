@@ -24,5 +24,6 @@ dxmonster.png - Boo Ripley
 racist.png - solska
 smoke.png - bluefrit
 stand.png - bluefrit
+hurt.png - Roxby
 
 all others by DPS2004 and Maddy
