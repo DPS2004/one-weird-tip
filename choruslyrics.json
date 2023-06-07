@@ -182,7 +182,7 @@
             "loop": "onBeat","fps": 0,"loopStart": 0,"portraitOffset": [0,0],"portraitSize": [25,25],"portraitScale": 2
         },
         {
-            "name": "tbe",
+            "name": "the",
             "frames": [22],
             "loop": "onBeat","fps": 0,"loopStart": 0,"portraitOffset": [0,0],"portraitSize": [25,25],"portraitScale": 2
         },

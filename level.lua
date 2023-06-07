@@ -197,130 +197,189 @@ row0:move(35,{x=10,y=70,pivot=0})
 row1:show(35)
 row1:move(35,{x=10,y=30,pivot=0})
 
-wanitaroom:move(34,{x=75,y=-20,sx=50,sy=50})
-wanitaroom:setbg(34,"wbg_mynameis.png")
-wanitaroom:setfg(34,"wanitafg.png")
-wanitaroom:mask(34,"wanitamask.png")
-wanitachar:move(34,{x=50,y=30,pivot=0,sx=3,sy=3})
-wanitachar:showchar(34)
-
-wanitaroom:move(35.5,{y=20},1,'outExpo')
-
 function wanitahop(b,y)
 	y = y or 30
 	
 	wanitachar:move(b - 0.2,{y=35},0.333,'outSine')
 	wanitachar:move(b + 0.133,{y=30},0.333,'inSine')
 end
-wanitahop(36.333)
-
-wanitaroom:setbg(37.666,'wbg_youngandlonely.png')
-
-wanitachar:playexpression(38,'barely')
-wanitachar:move(39,{sx=-3},0.5,'outQuad')
-
-wanitaroom:setbg(39.666,'wbg_white.png')
-wanitachar:playexpression(40,'neutral')
-
-wanitaroom:move(40,{x=50},2,'outExpo')
-window:move(40,{y=70},2,'outExpo')
 
 for100 = newpopup('for100.png',-16)
 inusdonly = newpopup('inusdonly.png',-17)
-for100:grow(40,83,22)
-inusdonly:grow(42,83,22)
-for100:shrink(44)
-inusdonly:shrink(44)
-
 hundo = level:newdecoration('hundo.png', 0, wanitaroom.index, 'hundo')
-hundo:hide(0)
-hundo:move(0,{x=-10,y=PY(126)})
-hundo:show(40)
-hundo:move(40,{x=PX(126)},1,'outExpo')
-hundo:move(43,{x=110},1,'inExpo')
 
 levitra = newpopup('levitra.png',-18)
 cialis = newpopup('cialis.png',-19)
-levitra:grow(45,30,60)
-wanitahop(45)
-cialis:grow(47,70,60)
-wanitahop(47)
-levitra:shrink(48)
-cialis:shrink(48)
-
-wanitaroom:move(47,{y=-20},1,'inQuad')
-wanitaroom:move(47.9,{x=-20,y=65})
-wanitaroom:move(48.01,{x=20},2,'outExpo')
-
-wanitaroom:setbg(48,'wbg_nigeria.png')
-wanitaroom:setfg(48,'wanitafg_nigeria.png')
-
-wanitachar:move(48,{sx=2,sy=2})
-wanitachar:playexpression(48,'barely')
-
-window:move(48,{x=70,y=50},2,'outExpo')
-
 palace = level:newdecoration('palace.png', 0, wanitaroom.index, 'palace')
-palace:hide(0)
-palace:move(0,{x=-50})
-palace:show(48)
-palace:move(50,{x=50},1,'outExpo')
-
-palace:hide(52)
-wanitaroom:setbg(52,'wbg_white.png')
-wanitaroom:setfg(52,'wanitafg.png')
-wanitachar:playexpression(52,'missed')
 
 toomoney = newpopup('toomoney.png',-20)
-toomoney:grow(48,70,120)
 govt = newpopup('govt.png',-21)
-govt:grow(48,70,150)
 loveme = newpopup('loveme.png',-22)
-loveme:grow(48,70,180)
+function wanitasection(first)
 
-toomoney:move(51,{y=20},1,'inSine')
-wanitahop(52)
+	local xmul = 1
+	if not first then
+		xmul = -1
+	end
+	local function xf(x)
+		if first then
+			return x
+		else
+			return 100 - x
+		end
+	end
+	
+	wanitaroom:move(34,{x=xf(75),y=-20,sx=50,sy=50})
+	wanitaroom:setbg(34,"wbg_mynameis.png")
+	wanitaroom:setfg(34,"wanitafg.png")
+	wanitaroom:mask(34,"wanitamask.png")
+	wanitachar:move(34,{x=50,y=30,pivot=0,sx=3*xmul,sy=3})
+	wanitachar:showchar(34)
 
-govt:move(55,{y=50},1,'inSine')
-wanitahop(56)
+	wanitaroom:move(35.5,{y=20},1,'outExpo')
 
-loveme:move(57,{y=80},1,'inSine')
-wanitahop(58)
-wanitaroom:move(56,{x=20,y=50},2,'inExpo')
 
-toomoney:shrink(60)
-govt:shrink(60)
-loveme:shrink(60)
+	wanitahop(36.333)
 
-wanitachar:playexpression(60,'happy')
-wanitachar:playexpression(64,'happy')
+	wanitaroom:setbg(37.666,'wbg_youngandlonely.png')
 
-wanitaroom:setfg(60,'wanitafg_desperate.png')
-wanitaroom:setfg(61,'wanitafg_wealthy.png')
-wanitaroom:setfg(62,'wanitafg_single.png')
-wanitaroom:setfg(63,'wanitafg_christian.png')
-wanitaroom:setfg(64,'wanitafg_allihave.png')
+	wanitachar:playexpression(38,'barely')
+	wanitachar:move(39,{sx=-3*xmul},0.5,'outQuad')
 
-for i=0,4 do
-	wanitaroom:move(60-0.5+i,{x=30+i*10},0.5,'inQuad')
-	if i==4 then
-		window:move(60+i,{x=130},1,'outExpo')
-		wanitaroom:move(60+i,{x=50,sx=75,sy=75},2,'outExpo')
+	wanitaroom:setbg(39.666,'wbg_white.png')
+	wanitachar:playexpression(40,'neutral')
+
+	wanitaroom:move(40,{x=50},2,'outExpo')
+	window:move(40,{y=70},2,'outExpo')
+
+	
+	for100:grow(40,xf(83),22)
+	inusdonly:grow(42,xf(83),22)
+	for100:shrink(44)
+	inusdonly:shrink(44)
+
+	hundo:hide(0)
+	hundo:move(0,{x=xf(-10),y=PY(126)})
+	hundo:show(40)
+	hundo:move(40,{x=xf(PX(126))},1,'outExpo')
+	hundo:move(43,{x=xf(110)},1,'inExpo')
+
+	levitra:grow(45,xf(30),60)
+	wanitahop(45)
+	cialis:grow(47,xf(70),60)
+	wanitahop(47)
+	levitra:shrink(48)
+	cialis:shrink(48)
+
+	wanitaroom:move(47,{y=-20},1,'inQuad')
+	wanitaroom:move(47.9,{x=xf(-20),y=65})
+	wanitaroom:move(48.01,{x=xf(20)},2,'outExpo')
+
+	wanitaroom:setbg(48,'wbg_nigeria.png')
+	wanitaroom:setfg(48,'wanitafg_nigeria.png')
+
+	wanitachar:move(48,{sx=2*xmul,sy=2})
+	wanitachar:playexpression(48,'barely')
+
+	window:move(48,{x=xf(70),y=50},2,'outExpo')
+
+	palace:hide(0)
+	palace:move(0,{x=xf(-50)})
+	palace:show(48)
+	palace:move(50,{x=xf(50)},1,'outExpo')
+
+	palace:hide(52)
+	wanitaroom:setbg(52,'wbg_white.png')
+	wanitaroom:setfg(52,'wanitafg.png')
+	wanitachar:playexpression(52,'missed')
+
+	
+	toomoney:grow(48,xf(70),120)
+	govt:grow(48,xf(70),150)
+	loveme:grow(48,xf(70),180)
+
+	toomoney:move(51,{y=20},1,'inSine')
+	wanitahop(52)
+
+	govt:move(55,{y=50},1,'inSine')
+	wanitahop(56)
+
+	loveme:move(57,{y=80},1,'inSine')
+	wanitahop(58)
+	wanitaroom:move(56,{x=xf(20),y=50},2,'inExpo')
+
+	toomoney:shrink(60)
+	govt:shrink(60)
+	loveme:shrink(60)
+
+	wanitachar:playexpression(60,'happy')
+	wanitachar:playexpression(64,'happy')
+
+	wanitaroom:setfg(60,'wanitafg_desperate.png')
+	wanitaroom:setfg(61,'wanitafg_wealthy.png')
+	wanitaroom:setfg(62,'wanitafg_single.png')
+	wanitaroom:setfg(63,'wanitafg_christian.png')
+	
+	if first then
+		for i=0,4 do
+			wanitaroom:move(60-0.5+i,{x=30+i*10},0.5,'inQuad')
+			if i==4 then
+				window:move(60+i,{x=130},1,'outExpo')
+				wanitaroom:move(60+i,{x=50,sx=75,sy=75},2,'outExpo')
+			else
+				window:move(60+i,{x=80+i*10},1,'outExpo')
+				wanitaroom:move(60+i,{x=20+i*5},0.5,'outSine')
+			end
+		end
+		wanitaroom:setfg(64,'wanitafg_allihave.png')
+		level:reorderrooms(65,2,0,3,1)
+		wanitaroom:move(68,{sx=0,sy=0})
+		level:reorderrooms(68,3,2,0,1)
 	else
-		window:move(60+i,{x=80+i*10},1,'outExpo')
-		wanitaroom:move(60+i,{x=20+i*5},0.5,'outSine')
+		for i=0,3 do
+			wanitaroom:move(60-0.5+i,{x=xf(30+i*10)},0.5,'inQuad')
+			if i==3 then
+				window:move(60+i,{x=xf(130)},1,'outExpo')
+				wanitaroom:move(60+i,{x=xf(50),sx=75,sy=75},2,'outExpo')
+			else
+				window:move(60+i,{x=xf(80+i*10)},1,'outExpo')
+				wanitaroom:move(60+i,{x=xf(20+i*5)},0.5,'outSine')
+			end
+		end
+		local swapbeat = 63.25
+		window:move(swapbeat,{sx=1.8,sy=1.8,x=50,y=50},0.75,'inExpo')
+		level:reorderrooms(swapbeat,2,0,3,1)
+		
+		wanitaroom:move(64,{sx=0,sy=0})
+		level:reorderrooms(64,3,2,0,1)
+		
+		row1:hide(swapbeat)
+		row2:hide(swapbeat)
+		row0:move(swapbeat,{y=10})
+		windowroom:settheme(swapbeat,'None')
+		windowroom:setbg(swapbeat,'idiotblank.png')
+		windowroom:setbg(63.666,'idiot0.png')
+		windowroom:setbg(64,'idiot1.png')
+		windowroom:setbg(64.666,'idiot2.png')
+		windowroom:setbg(65,'idiot3.png')
+		windowroom:setbg(65.333,'idiot4.png')
+		windowroom:setbg(65.666,'idiot5.png')
+		windowroom:setbg(66,'idiot6.png')
+		windowroom:setbg(66.5,'idiot7.png')
+		windowroom:setbg(67,'idiot8.png')
+		
+		windowroom:setbg(68,'idiot9.png')
+		windowroom:invertcolors(68)
+		bgroom:invertcolors(68)
+		windowroom:setbg(68.5,'idiot8.png')
+		windowroom:invertcolors(68.5)
+		bgroom:invertcolors(68.5)
+		windowroom:setbg(69,'')
+		
+		
 	end
 end
-
-level:reorderrooms(65,2,0,3,1)
-
-
-
-
-
-wanitaroom:move(68,{sx=0,sy=0})
-level:reorderrooms(68,3,2,0,1)
-
+wanitasection(true)
 
 --chorus time!!!!!!
 
@@ -401,7 +460,6 @@ function chorus(beat,first)
 	--a weird trick.
 	--(gets killed instantly)
 	
-	window:move(-2,{sx=1.8,sy=1.8,x=50,y=50},2,'inExpo')
 	
 	for i=0,7 do
 		row0:setborder(i*7,'Outline','ffff00',100,0,'Linear')
@@ -553,7 +611,7 @@ function chorus(beat,first)
 end
 	
 	
-	
+window:move(66,{sx=1.8,sy=1.8,x=50,y=50},2,'inExpo')
 chorus(68,true)
 
 level:offset(0)
@@ -677,7 +735,18 @@ for i=0,3 do
 	window:move((i+4)*4+4,{rot=0},1,'outExpo')
 end
 
+windowroom:settheme(32-0.333,'Rooftop')
+windowroom:flash(32-0.333,'E6ECF3',100,'E6ECF3',0,0.5,'Linear',true)
+navbar:move(32-0.333,{y=50+PY(16)},1,'outExpo')
 
+row2:show(32)
+
+row0:move(32,{x=10,y=70,pivot=0},2,'outExpo')
+row2:move(32,{x=10,y=50,pivot=0},2,'outExpo')
+row1:move(32,{x=10,y=30,pivot=0},2,'outExpo')
+
+level:offset(120) --shhh pretend those 4 beats dont exist im not lazy you are
+wanitasection(false) -- my favorite part of this level is when wanita says "its wanitaing time" and wanitas all over the place
 
 
 
