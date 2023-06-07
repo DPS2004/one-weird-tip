@@ -25,5 +25,7 @@ racist.png - solska
 smoke.png - bluefrit
 stand.png - bluefrit
 hurt.png - Roxby
+theline.png - Myseif
+devsdonuts.png - lugi
 
 all others by DPS2004 and Maddy
