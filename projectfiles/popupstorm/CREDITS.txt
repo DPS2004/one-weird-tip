@@ -31,5 +31,6 @@ theline.png - Myseif
 devsdonuts.png - lugi
 hotdogs.png - thefinals
 baltimore.png - plastermaster
+internlegends.png - MarioMak967
 
 all others by DPS2004 and Maddy
