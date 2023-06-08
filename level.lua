@@ -1,6 +1,6 @@
 -- one weird tip
 -- (discovered by a mom)
-_ANIMATESPHERE = false
+_ANIMATESPHERE = true
 
 
 level:setuprooms()
@@ -235,6 +235,7 @@ function wanitasection(first)
 	wanitaroom:mask(34,"wanitamask.png")
 	wanitachar:move(34,{x=50,y=30,pivot=0,sx=3*xmul,sy=3})
 	wanitachar:showchar(34)
+	wanitachar:setborder(34,'Outline','000000',100,0,'Linear')
 
 	wanitaroom:move(35.5,{y=20},1,'outExpo')
 
@@ -356,6 +357,7 @@ function wanitasection(first)
 		row1:hide(swapbeat)
 		row2:hide(swapbeat)
 		row0:move(swapbeat,{y=10})
+		row0:setborder(swapbeat,'Outline','000000',100,0,'Linear')
 		windowroom:settheme(swapbeat,'None')
 		windowroom:setbg(swapbeat,'idiotblank.png')
 		windowroom:setbg(63.666,'idiot0.png')
@@ -763,12 +765,14 @@ level:offset(0) --init verts
 verts = {}
 vertstatus = {}
 for i=1,162 do
-	verts[i] = level:newdecoration('weirdtipwindow.png',11, windowroom.index, 'vert'..i)
+	verts[i] = level:newdecoration('popups',11, windowroom.index, 'vert'..i)
 	verts[i]:move(0,{x=-999,y=-999})
 	verts[i]:hide(0)
+	verts[i]:playexpression(0,tostring(math.random(0,48)))
 	vertstatus[i] = {undrawn=true,c=false}
 end
 level:offset(245) -- ending
+level:alloutline(0,'000000',50,1,'Linear')
 
 
 proj = dofile('../proj.lua')
@@ -777,9 +781,11 @@ icosphere_mesh = proj:loadobj('../icosphere.obj',4,true)
 sphereint = 1
 spherelength = ((20*7)+2)/sphereint
 if not _ANIMATESPHERE then
-	spherelength = 7
+	spherelength = 14
 end
 
+local zscale = {}
+print('rendering the Ball...')
 for i = -1,spherelength do
 	local beat = i * sphereint
 
@@ -824,6 +830,8 @@ for i = -1,spherelength do
 				verts[v]:move(beat-sphereint,{x=PX(x),y=PY(y),sx=15*z,sy=15*z},0,'Linear')
 			end
 			verts[v]:move(beat,{x=PX(x),y=PY(y),sx=15*z,sy=15*z},duration,'Linear')
+			zscale[beat] = zscale[beat] or {}
+			zscale[beat][v] = z
 		end
 	end
 	
@@ -833,8 +841,32 @@ for i = -1,spherelength do
 		z = 0.03 - z
 		drawvert(_i,x,y,z,c)
 	end
+
 	
-	
-	
-	
+end
+
+for i,beatz in ipairs(zscale) do
+	for _i=1,162 do
+		if not beatz[_i] then
+			zscale[i][_i] = 0
+		end
+	end
+end
+
+function expressionwave(beat)
+	if zscale[beat] then
+		local smallest = 9999
+		for k,v in pairs(zscale[beat]) do
+			if v < smallest and v ~= 0 then
+				smallest = v
+			end
+		end
+		for k,v in pairs(zscale[beat]) do
+			verts[k]:playexpression(beat + math.max(0,v-smallest)*80,tostring(math.random(0,48)))
+		end
+	end
+end
+
+for i=0,20 do
+	expressionwave(i*7)
 end

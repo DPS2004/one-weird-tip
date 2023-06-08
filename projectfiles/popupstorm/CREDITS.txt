@@ -21,7 +21,6 @@ seenthisman.png - PKDeluxe
 freeanti.png - whistlr
 kermit.png - LandyRS
 dxmonster.png - Boo Ripley
-racist.png - solska
 smoke.png - bluefrit
 stand.png - bluefrit
 hurt.png - Roxby
@@ -30,5 +29,7 @@ hot.png - ember
 sbahjhotbabes.png - Zara
 theline.png - Myseif
 devsdonuts.png - lugi
+hotdogs.png - thefinals
+baltimore.png - plastermaster
 
 all others by DPS2004 and Maddy
