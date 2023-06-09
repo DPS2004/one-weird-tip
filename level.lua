@@ -86,6 +86,11 @@ function newpopup(file, layer)
 		self.decofront:show(beat)
 	end
 	
+	function popup:playexpression(beat,e)
+		self.decofront:playexpression(beat,e)
+		self.decoback:playexpression(beat,e)
+	end
+	
 	
 	popup:move(0, {x=-100,y=-100, sx=0, sy=0})
 	
@@ -109,8 +114,8 @@ ottoexec:move(0,{x=PX(20),y=PY(30),sx=0,sy=0.5})
 mouse = level:newdecoration('mousetemporary.png', -2, bgroom.index, 'mouse')
 mouse:move(0,{x=PX(60),y=PY(-10),sx=0.5,sy=0.5})
 
-ontop:flash(0,'000000',100)
-ontop:flash(0.01,'000000',100,'000000',0,1,'Linear')
+--ontop:flash(0,'000000',100)
+--ontop:flash(0.01,'000000',100,'000000',0,1,'Linear')
 
 mouse:move(0.01,{x=PX(20),y=PY(30)},1.5,'outSine')
 mouse:move(1.5,{sx=0.4,sy=0.4},0.2,'inSine')
@@ -761,19 +766,27 @@ chorus(189,false)
 
 
 
-level:offset(0) --init verts
+level:offset(0) 
+math.randomseed(0)
+
+yourrank = newpopup('yourrank.png',-23)
+rankletter = newpopup('rankletters',-24)
+rankmessage = newpopup('rankmessages',-25)
+
+--init verts
 verts = {}
 vertstatus = {}
 for i=1,162 do
 	verts[i] = level:newdecoration('popups',11, windowroom.index, 'vert'..i)
 	verts[i]:move(0,{x=-999,y=-999})
 	verts[i]:hide(0)
-	verts[i]:playexpression(0,tostring(math.random(0,53)))
+	verts[i]:playexpression(0,tostring(math.random(0,56)))
 	vertstatus[i] = {undrawn=true,c=false}
 end
 level:offset(245) -- ending
 level:alloutline(0,'000000',50,1,'Linear')
 
+windowroom:wavyrows(0,true,10,1,0)
 
 proj = dofile('../proj.lua')
 icosphere_mesh = proj:loadobj('../icosphere.obj',4,true)
@@ -862,11 +875,95 @@ function expressionwave(beat)
 			end
 		end
 		for k,v in pairs(zscale[beat]) do
-			verts[k]:playexpression(beat + math.max(0,v-smallest)*80,tostring(math.random(0,53)))
+			verts[k]:playexpression(beat + math.max(0,v-smallest)*80,tostring(math.random(0,56)))
 		end
 	end
 end
 
 for i=0,20 do
 	expressionwave(i*7)
+	windowroom:screenwaves(i*7+0,true,0,0,0)
+	windowroom:screenwaves(i*7+0.2,false,0,0,0)
 end
+
+for i=0,9 do
+	row1:setborder(i*14,'Outline','ffff00',100,0,'Linear')
+	row1:setborder(i*14+1,'Outline','000000',50,1,'Linear')
+end
+
+
+for i=0,10 do
+	row0:move(i*14+0,{x=3,y=65},3,'outExpo')
+	row0:move(i*14+3,{x=10,y=70},4,'inExpo')
+	row0:move(i*14+7,{x=17,y=65},3,'outExpo')
+	row0:move(i*14+10,{x=10,y=70},4,'inExpo')
+	
+	row1:move(i*14+0,{x=17,y=35},3,'outExpo')
+	row1:move(i*14+3,{x=10,y=30},4,'inExpo')
+	row1:move(i*14+7,{x=3,y=35},3,'outExpo')
+	row1:move(i*14+10,{x=10,y=30},4,'inExpo')
+end
+windowroom:stutter(142.2,'Add',3,0.2,10)
+windowroom:setfg(144,'bsod.png')
+windowdeco:hide(144)
+
+yourrank:grow(150,50,PY(198-35))
+rankletter:grow(153,50,PY(198-92))
+rankmessage:grow(156,50,PY(198-141))
+windowroom:setfg(156,'bsod_rank.png')
+
+---auhg
+
+sblue = level:customconditional('sblue','atLeastRank(S)')
+sred = level:customconditional('sred','atLeastRank(S)')
+sred:red(true)
+
+ablue = level:customconditional('ablue','atLeastRank(A)')
+ared = level:customconditional('ared','atLeastRank(A)')
+ared:red(true)
+
+bblue = level:customconditional('bblue','atLeastRank(B)')
+bred = level:customconditional('bred','atLeastRank(B)')
+bred:red(true)
+
+cblue = level:customconditional('cblue','atLeastRank(C)')
+cred = level:customconditional('cred','atLeastRank(C)')
+cred:red(true)
+
+dblue = level:customconditional('dblue','atLeastRank(D)')
+dred = level:customconditional('dred','atLeastRank(D)')
+dred:red(true)
+
+fblue = level:customconditional('fblue','atLeastRank(F)')
+fred = level:customconditional('fred','atLeastRank(F)')
+fred:red(true)
+
+level:conditional({sblue},0,function()
+	rankletter:playexpression(150,'s')
+	rankmessage:playexpression(150,'s')
+end)
+
+level:conditional({ablue,sred},0,function()
+	rankletter:playexpression(150,'a')
+	rankmessage:playexpression(150,'a')
+end)
+
+level:conditional({bblue,ared},0,function()
+	rankletter:playexpression(150,'b')
+	rankmessage:playexpression(150,'b')
+end)
+
+level:conditional({cblue,bred},0,function()
+	rankletter:playexpression(150,'c')
+	rankmessage:playexpression(150,'c')
+end)
+
+level:conditional({dblue,cred},0,function()
+	rankletter:playexpression(150,'d')
+	rankmessage:playexpression(150,'d')
+end)
+
+level:conditional({fblue,dred},0,function()
+	rankletter:playexpression(150,'f')
+	rankmessage:playexpression(150,'f')
+end)

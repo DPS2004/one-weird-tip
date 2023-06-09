@@ -33,5 +33,7 @@ hotdogs.png - thefinals
 baltimore.png - plastermaster
 internlegends.png - MarioMak967
 thelid.png - Peachy6206
+fumo.png - Colon
+nova.png - CV35W
 
 all others by DPS2004 and Maddy

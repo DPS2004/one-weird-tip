@@ -213,7 +213,7 @@
         },
         {
             "name": "27",
-            "frames": [27],
+            "frames": [28],
             "loop": "onBeat","fps": 0,"loopStart": 0,"portraitOffset": [0,0],"portraitSize": [25,25],"portraitScale": 2
         },
         {
@@ -287,16 +287,6 @@
             "loop": "onBeat","fps": 0,"loopStart": 0,"portraitOffset": [0,0],"portraitSize": [25,25],"portraitScale": 2
         },
         {
-            "name": "40",
-            "frames": [41],
-            "loop": "onBeat","fps": 0,"loopStart": 0,"portraitOffset": [0,0],"portraitSize": [25,25],"portraitScale": 2
-        },
-        {
-            "name": "41",
-            "frames": [42],
-            "loop": "onBeat","fps": 0,"loopStart": 0,"portraitOffset": [0,0],"portraitSize": [25,25],"portraitScale": 2
-        },
-        {
             "name": "42",
             "frames": [43],
             "loop": "onBeat","fps": 0,"loopStart": 0,"portraitOffset": [0,0],"portraitSize": [25,25],"portraitScale": 2
@@ -354,6 +344,21 @@
         {
             "name": "53",
             "frames": [54],
+            "loop": "onBeat","fps": 0,"loopStart": 0,"portraitOffset": [0,0],"portraitSize": [25,25],"portraitScale": 2
+        },
+        {
+            "name": "54",
+            "frames": [55],
+            "loop": "onBeat","fps": 0,"loopStart": 0,"portraitOffset": [0,0],"portraitSize": [25,25],"portraitScale": 2
+        },
+        {
+            "name": "55",
+            "frames": [56],
+            "loop": "onBeat","fps": 0,"loopStart": 0,"portraitOffset": [0,0],"portraitSize": [25,25],"portraitScale": 2
+        },
+        {
+            "name": "56",
+            "frames": [57],
             "loop": "onBeat","fps": 0,"loopStart": 0,"portraitOffset": [0,0],"portraitSize": [25,25],"portraitScale": 2
         }
     ]

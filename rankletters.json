@@ -1,0 +1,188 @@
+{
+    "size": [
+        187,
+        130
+    ],
+    "clips": [
+        {
+            "name": "neutral",
+            "frames": [
+                0
+            ],
+            "loop": "onBeat",
+            "fps": 0,
+            "loopStart": 0,
+            "portraitOffset": [
+                0,
+                0
+            ],
+            "portraitSize": [
+                25,
+                25
+            ],
+            "portraitScale": 2
+        },
+        {
+            "name": "happy",
+            "frames": [
+                0
+            ],
+            "loop": "onBeat",
+            "fps": 0,
+            "loopStart": 0,
+            "portraitOffset": [
+                0,
+                0
+            ],
+            "portraitSize": [
+                25,
+                25
+            ],
+            "portraitScale": 2
+        },
+        {
+            "name": "barely",
+            "frames": [
+                0
+            ],
+            "loop": "onBeat",
+            "fps": 0,
+            "loopStart": 0,
+            "portraitOffset": [
+                0,
+                0
+            ],
+            "portraitSize": [
+                25,
+                25
+            ],
+            "portraitScale": 2
+        },
+        {
+            "name": "missed",
+            "frames": [
+                0
+            ],
+            "loop": "onBeat",
+            "fps": 0,
+            "loopStart": 0,
+            "portraitOffset": [
+                0,
+                0
+            ],
+            "portraitSize": [
+                25,
+                25
+            ],
+            "portraitScale": 2
+        },
+        {
+            "name": "s",
+            "frames": [
+                0
+            ],
+            "loop": "onBeat",
+            "fps": 0,
+            "loopStart": 0,
+            "portraitOffset": [
+                0,
+                0
+            ],
+            "portraitSize": [
+                25,
+                25
+            ],
+            "portraitScale": 2
+        },
+        {
+            "name": "a",
+            "frames": [
+                1
+            ],
+            "loop": "onBeat",
+            "fps": 0,
+            "loopStart": 0,
+            "portraitOffset": [
+                0,
+                0
+            ],
+            "portraitSize": [
+                25,
+                25
+            ],
+            "portraitScale": 2
+        },
+        {
+            "name": "b",
+            "frames": [
+                2
+            ],
+            "loop": "onBeat",
+            "fps": 0,
+            "loopStart": 0,
+            "portraitOffset": [
+                0,
+                0
+            ],
+            "portraitSize": [
+                25,
+                25
+            ],
+            "portraitScale": 2
+        },
+        {
+            "name": "c",
+            "frames": [
+                3
+            ],
+            "loop": "onBeat",
+            "fps": 0,
+            "loopStart": 0,
+            "portraitOffset": [
+                0,
+                0
+            ],
+            "portraitSize": [
+                25,
+                25
+            ],
+            "portraitScale": 2
+        },
+        {
+            "name": "d",
+            "frames": [
+                4
+            ],
+            "loop": "onBeat",
+            "fps": 0,
+            "loopStart": 0,
+            "portraitOffset": [
+                0,
+                0
+            ],
+            "portraitSize": [
+                25,
+                25
+            ],
+            "portraitScale": 2
+        },
+        {
+            "name": "f",
+            "frames": [
+                5
+            ],
+            "loop": "onBeat",
+            "fps": 0,
+            "loopStart": 0,
+            "portraitOffset": [
+                0,
+                0
+            ],
+            "portraitSize": [
+                25,
+                25
+            ],
+            "portraitScale": 2
+        }
+    ]
+}
