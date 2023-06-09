@@ -100,6 +100,12 @@ end
 
 
 -- intro
+
+--lag reduction
+windowroom:wavyrows(0,true,0,0,0)
+windowroom:wavyrows(0,false,0,0,0)
+
+
 bgroom:setbg(0,'wdbackground.png')
 window:move(0,{x=50,y=50,sx=1,sy=1})
 windowroom:settheme(0,'HospitalWard')
