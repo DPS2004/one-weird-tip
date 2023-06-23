@@ -39,6 +39,7 @@ heatdeath.png - WolfPlay013
 survey.png - BIrDIS
 ewwpeople.png - Het
 hotpoliticians.png - 3T
+love2d.png - DeadlySprinklez
 
 
 all others by DPS2004 and Maddy

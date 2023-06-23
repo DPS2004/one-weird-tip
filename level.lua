@@ -525,7 +525,7 @@ function chorus(beat,first)
 	winman:move(2,56,{x=120},4,'outExpo')
 	
 	local lastexpr = -1
-	math.randomseed(1)
+	math.randomseed(0)
 	for i=0,9*14 do
 		local expression = math.random(0,29)
 		if expression == lastexpr then
@@ -770,7 +770,7 @@ wanitasection(false) -- my favorite part of this level is when wanita says "its 
 --second chorus 
 chorus(189,false)
 
-imagecount = 61
+imagecount = 62
 
 level:offset(0) 
 math.randomseed(0)
@@ -881,7 +881,10 @@ function expressionwave(beat)
 			end
 		end
 		for k,v in pairs(zscale[beat]) do
-			verts[k]:playexpression(beat + math.max(0,v-smallest)*80,tostring(math.random(0,imagecount)))
+			local realbeat = beat + math.max(0,v-smallest)*80
+			if realbeat <= 141.5 then
+				verts[k]:playexpression(realbeat + math.max(0,v-smallest)*80,tostring(math.random(0,imagecount)))
+			end
 		end
 	end
 end

@@ -385,6 +385,11 @@
             "name": "61",
             "frames": [62],
             "loop": "onBeat","fps": 0,"loopStart": 0,"portraitOffset": [0,0],"portraitSize": [25,25],"portraitScale": 2
+        },
+        {
+            "name": "62",
+            "frames": [63],
+            "loop": "onBeat","fps": 0,"loopStart": 0,"portraitOffset": [0,0],"portraitSize": [25,25],"portraitScale": 2
         }
     ]
 }
