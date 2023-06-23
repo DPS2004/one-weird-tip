@@ -337,6 +337,7 @@
 		{ "bar": 49, "beat": 5, "y": 1, "type": "AddClassicBeat", "row": 1, "tick": 0.5, "swing": 0, "hold": 0 },
 		{ "bar": 49, "beat": 6.5, "y": 3, "type": "PlaySound", "isCustom": false, "customSoundType": "CueSound", "sound": {"filename": "SyncopationBeepHigh", "volume": 75, "pitch": 100, "pan": 0, "offset": 0} },
 		{ "bar": 49, "beat": 7, "y": 0, "type": "SetRowXs", "row": 0, "pattern": "------", "syncoBeat": -1, "syncoSwing": 0 },
+		{ "bar": 49, "beat": 7, "y": 0, "type": "CallCustomMethod", "methodName": "SetMistakeWeight(2, 0.5)", "executionTime": "OnBar", "sortOffset": 0 },
 		{ "bar": 49, "beat": 7.5, "y": 0, "type": "AddClassicBeat", "row": 0, "tick": 0.5, "swing": 0, "hold": 0 },
 		{ "bar": 50, "beat": 1, "y": 3, "type": "PlaySound", "isCustom": false, "customSoundType": "CueSound", "sound": {"filename": "SyncopationBeepLow", "volume": 100, "pitch": 100, "pan": 0, "offset": 0} },
 		{ "bar": 50, "beat": 1, "y": 0, "type": "SetRowXs", "row": 1, "pattern": "------", "syncoBeat": 3, "syncoSwing": 0 },

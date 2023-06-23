@@ -770,7 +770,7 @@ wanitasection(false) -- my favorite part of this level is when wanita says "its 
 --second chorus 
 chorus(189,false)
 
-
+imagecount = 61
 
 level:offset(0) 
 math.randomseed(0)
@@ -786,7 +786,7 @@ for i=1,162 do
 	verts[i] = level:newdecoration('popups',11, windowroom.index, 'vert'..i)
 	verts[i]:move(0,{x=-999,y=-999})
 	verts[i]:hide(0)
-	verts[i]:playexpression(0,tostring(math.random(0,56)))
+	verts[i]:playexpression(0,tostring(math.random(0,imagecount)))
 	vertstatus[i] = {undrawn=true,c=false}
 end
 level:offset(245) -- ending
@@ -881,7 +881,7 @@ function expressionwave(beat)
 			end
 		end
 		for k,v in pairs(zscale[beat]) do
-			verts[k]:playexpression(beat + math.max(0,v-smallest)*80,tostring(math.random(0,56)))
+			verts[k]:playexpression(beat + math.max(0,v-smallest)*80,tostring(math.random(0,imagecount)))
 		end
 	end
 end

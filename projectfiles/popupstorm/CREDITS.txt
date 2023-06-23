@@ -35,5 +35,10 @@ internlegends.png - MarioMak967
 thelid.png - Peachy6206
 fumo.png - Colon
 nova.png - CV35W
+heatdeath.png - WolfPlay013
+survey.png - BIrDIS
+ewwpeople.png - Het
+hotpoliticians.png - 3T
+
 
 all others by DPS2004 and Maddy
